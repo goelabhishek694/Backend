@@ -4,6 +4,7 @@
 
 const http = require("http");
 const fs = require('fs');
+const _ = require('lodash');
 const server = http.createServer((req, res) => {
     console.log("request from browser to server");
     // console.log(req.method)
@@ -12,6 +13,13 @@ const server = http.createServer((req, res) => {
     // res.write("<h1>Hello World</h1>");
     // res.write("<h2>I am ready for you</h2>");
     // res.end("<h3>Testing res.end</h3>");
+    //using lodash
+    let greet = _.once(() => {
+        console.log("How are you?");
+    });
+
+    greet();
+    greet();
     let path = './views';
     switch (req.url) {
       case "/":
