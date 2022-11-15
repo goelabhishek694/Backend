@@ -18,27 +18,54 @@ let user = [
     age: 50,
   },
 ];
+
+const userRouter = express.Router();
+app.use('/user', userRouter);
+
+userRouter
+    .route("/")
+    .get(getUser)
+    .post(postUser)
+    .patch(updateUser)
+    .delete(deleteUser)
+
+userRouter
+    .route("/:name")
+    .get(getUserById);
+
 //with query
-app.get('/user', (req, res) => {
+// app.get('/user', )
+
+// app.post('/user', );
+
+// app.patch('/user', );
+
+// app.delete('/user', )
+
+//params
+// app.get('/user/:name', );
+
+function getUser(req, res){
     console.log(req.query);
     let { name, age } = req.query;
-    let filteredData=user.filter(userObj => {
-        return (userObj.name==name && userObj.age==age)
-    })
-    res.send(filteredData);
-})
+    // let filteredData=user.filter(userObj => {
+    //     return (userObj.name==name && userObj.age==age)
+    // })
+    // res.send(filteredData);
+    res.send(user);
+}
 
-app.post('/user', (req, res) => {
+function postUser(req, res){
     console.log(req.body.Name);
     //then i can put this in db 
-    user = req.body;
+    user.push(req.body);
     res.json({
         message: "Data received successfully",
         user: req.body
     });
-});
+}
 
-app.patch('/user', (req, res) => {
+function updateUser(req, res){
     console.log(req.body);
     let dataToBeUpdated = req.body;
     for (key in dataToBeUpdated) {
@@ -47,24 +74,21 @@ app.patch('/user', (req, res) => {
     res.json({
         message: "data updated succesfully"
     })
-});
+}
 
-app.delete('/user', (req, res) => {
+function deleteUser(req, res){
     user = {};
     res.json({
         msg: "user has been deleted"
     });
-})
+}
 
-//params
-app.get('/user/:name', (req, res) => {
+function getUserById(req, res){
     console.log(req.params.name);
     //let {id}=req.params;
     // let user = db.findOne(id);
     res.json({ msg: "user id is ", "obj": req.params });
-});
-
-
+}
 
 
 
