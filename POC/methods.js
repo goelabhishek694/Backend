@@ -20,7 +20,9 @@ let user = [
 ];
 
 const userRouter = express.Router();
+const authRouter = express.Router();
 app.use('/user', userRouter);
+app.use("/auth", authRouter);
 
 userRouter
     .route("/")
@@ -33,6 +35,10 @@ userRouter
     .route("/:name")
     .get(getUserById);
 
+authRouter
+    .route('/signup')
+    .get()
+.post()
 //with query
 // app.get('/user', )
 
