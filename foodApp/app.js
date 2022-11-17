@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
+const mongoose = require('mongoose');
+const db_link  = require('./secrets');
 app.use(express.json());
+
 let user = [
   {
     id: 1,
@@ -26,7 +29,7 @@ app.use("/auth", authRouter);
 
 userRouter
   .route("/")
-  .get(getUser)
+  .get(middleware1,getUser,middleware2)
   .post(postUser)
   .patch(updateUser)
   .delete(deleteUser);
@@ -45,15 +48,27 @@ authRouter.route("/signup").get(getSignup).post(postSignup);
 
 //params
 // app.get('/user/:name', );
+function middleware1(req,res,next) {
+    console.log("midleware 1 called");
+    next();
+}
 
-function getUser(req, res) {
+function middleware2(req,res) {
+    console.log("midleware 2 called");
+    res.json({ msg: "user returned" })
+}
+
+function getUser(req, res,next) {
   console.log(req.query);
   let { name, age } = req.query;
   // let filteredData=user.filter(userObj => {
   //     return (userObj.name==name && userObj.age==age)
   // })
   // res.send(filteredData);
-  res.send(user);
+    
+//   res.send(user);
+    console.log("getUser called ");
+    next();
 }
 
 function postUser(req, res) {
@@ -107,3 +122,13 @@ function postSignup(req, res) {
 }
 
 app.listen(5000);
+
+
+mongoose.connect(db_link)
+    .then(function (db) {
+        console.log("db connected");
+        // console.log(db);
+    })
+    .catch(function (err) {
+        console.log(err);
+    });
