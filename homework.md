@@ -2,7 +2,6 @@
 
 https://medium.com/dlt-labs-publication/package-json-vs-package-lock-json-c8d5deba12cb
 
-
 17/11/22
 
 https://mongoosejs.com/docs/queries.html
@@ -14,3 +13,5 @@ https://expressjs.com/en/guide/using-middleware.html
 disclaimer: read only when comfortable with backend
 
 https://itnext.io/setup-logger-for-node-express-app-9ef4e8f73dac
+
+JEST - testing library for react
