@@ -15,3 +15,8 @@ disclaimer: read only when comfortable with backend
 https://itnext.io/setup-logger-for-node-express-app-9ef4e8f73dac
 
 JEST - testing library for react
+
+19/11/22
+
+https://mongoosejs.com/docs/middleware.html#pre
+https://www.npmjs.com/package/bcrypt?activeTab=readme
