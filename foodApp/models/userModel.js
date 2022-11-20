@@ -54,13 +54,13 @@ userSchema.pre("save", function () {
   this.confirmPassword = undefined;
 });
 
-userSchema.pre('save', async function () {
-    let salt = await bcrypt.genSalt();
-    console.log(salt);
-    let hashedString = await bcrypt.hash(this.password, salt);
-    this.password = hashedString;
-    // console.log(hashedString);
-})
+// userSchema.pre('save', async function () {
+//     let salt = await bcrypt.genSalt();
+//     console.log(salt);
+//     let hashedString = await bcrypt.hash(this.password, salt);
+//     this.password = hashedString;
+//     // console.log(hashedString);
+// })
 
 //models
 const userModel = mongoose.model("userModel", userSchema);
