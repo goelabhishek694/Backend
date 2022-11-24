@@ -10,5 +10,5 @@ const authRouter = require('./Routers/authRouter');
 
 app.use("/user", userRouter);
 app.use("/auth", authRouter);
-
+const planModel = require("./models/planModel");
 app.listen(5000);

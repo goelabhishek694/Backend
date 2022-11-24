@@ -8,7 +8,7 @@ const {
   allUser,
 } = require("../controller/userController");
 const {isAuthorised,protectRoute} = require('../helper');
-const { signup, login } = require('../controller/authController');
+const { signup, login, forgetpassword, resetpassword, logout } = require('../controller/authController');
 
 //user ke options
 userRouter
