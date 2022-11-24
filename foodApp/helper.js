@@ -11,7 +11,7 @@ module.exports.protectRoute = async function (req, res, next) {
     const user = await userModel.findById(payloadObj.payload);
     req.id = user.id;
     req.role = user.role;
-    if (isVerified) next();
+    if (payloadObj) next();
     else {
       req.json({
         msg: "user not verified",
@@ -32,8 +32,10 @@ module.exports.isAuthorised = function (roles) {
     if (roles.includes(role)) {
       next();
     }
-    res.status(401).json({
-      msg: "operation not allowed",
-    });
+    else {
+      res.status(401).json({
+        msg: "role invalid",
+      });
+    }
   };
 };
