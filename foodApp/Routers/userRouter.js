@@ -24,8 +24,17 @@ userRouter
   .route("/signup")
   .post(signup);
 
-userRouter.route("/forgetpassword").post(forgetpassword);
-userRouter.route("/resetpassword/:token").post(resetpassword);
+userRouter
+  .route("/forgetpassword")
+  .post(forgetpassword);
+
+userRouter
+  .route("/resetpassword/:token")
+  .post(resetpassword);
+
+userRouter
+  .route("/logout")
+  .get(logout);
 
 //profile page
 userRouter.use(protectRoute)
