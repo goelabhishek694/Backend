@@ -10,16 +10,15 @@ reviewRouter
     .route("/top3")
     .get(top3Review);
 
+//all reviews of a particular plan
 reviewRouter
     .route("/:id")
     .get(getPlanReview);
 
+reviewRouter.use(protectRoute)
 reviewRouter
-    .route(" ")
-    .post(createReview);
-
-reviewRouter
-    .route("")
+   .route("/crud:/plan")
+    .post(createReview)
     .patch(updateReview)
     .delete(deleteReview)
 

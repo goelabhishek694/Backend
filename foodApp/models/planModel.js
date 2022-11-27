@@ -32,8 +32,13 @@ const planSchema = mongoose.Schema({
         }, 'discount cannot be 100%']
     },
     ratingsAverage: {
-        type: Number
-    }
+        type: Number,
+        // default:0
+    },
+    // nor: {
+    //     type: Number,
+    //     default:0
+    // }
 });
 
 const planModel = mongoose.model("planModel", planSchema);
