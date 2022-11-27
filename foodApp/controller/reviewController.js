@@ -1,5 +1,6 @@
 const planModel = require("../models/planModel");
 const reviewModel = require("../models/reviewModel");
+
 module.exports.getAllReviews = async function (req, res) {
   try {
     const reviews = await reviewModel.find();
@@ -63,7 +64,7 @@ module.exports.getPlanReview = async function (req, res) {
 };
 
 module.exports.createReview = async function (req, res) {
-  try {
+    try {
     const planId = req.params.plan;
     const plan = await planModel.findById(planId);
     const review = req.body;
@@ -116,13 +117,12 @@ module.exports.updateReview = async function (req, res) {
 
 module.exports.deleteReview = async function (req, res) {
     try {
-        let planId = req.body.id;
+        let planId = req.params.plan;
         let id = req.body.id;
         //change avg rating of plan 
         let review = await reviewModel.findByIdAndDelete(id);
-        req.json({
-            message: "review deleted",
-            review
+        res.json({
+            message: "review deleted"
         })
     }
     catch (err) {

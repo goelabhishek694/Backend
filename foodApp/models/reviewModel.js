@@ -9,7 +9,7 @@ mongoose
     console.log(err);
   });
 
-const reviewSchema = new mmongoose.Schema({
+const reviewSchema = new mongoose.Schema({
   review: {
     type: String,
     require: [true, "review is required"],
@@ -37,13 +37,13 @@ const reviewSchema = new mmongoose.Schema({
 });
 
 //find findbyid, findone , findoneandupdate 
-reviewScehma.pre(/^find/, function (next) {
-    this.populate({
-        path: 'user',
-        select: "name profileImage"
-    }).populate("plan");
-    next();
-})
+reviewSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "user",
+    select: "name profileImage",
+  }).populate("plan");
+  next();
+});
 
 const reviewModel = mongoose.model("reviewModel", reviewSchema);
 
