@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -19,7 +19,7 @@
         <button>Signup</button>
     </form>
 
-    <!-- axios post  -->
+    
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <script>
         let btn=document.querySelector('button');
@@ -38,6 +38,57 @@
 
 
 
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe Payment Demo</title>
+</head>
+
+<body>
+    <h3>Welcome to Payment Gateway</h3>
+    <form action="createSession" method="POST">
+        <button type="submit" id="checkout-button">Checkout</button>
+        <script src="'//checkout.stripe.com/v2/checkout.js" class="stripe-button"
+            data-key="pk_test_2VmtDx5s0gIh5ojgsvijNrLa00GNgwwfEN" data-ammount="700" data-cuurency="usd"
+            data-name="foodApp" data-description="buy food plan" data-locale="auto">
+            </script>
+    </form>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Buy cool new product</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+
+<body>
+    <section>
+        <div class="product">
+            <img src="https://i.imgur.com/EHyR2nP.png" alt="The cover of Stubborn Attachments" />
+            <div class="description">
+                <h3>Stubborn Attachments</h3>
+                <h5>$20.00</h5>
+            </div>
+        </div>
+        <form action="/booking/createSession" method="POST">
+            <button type="submit" id="checkout-button">Checkout</button>
+        </form>
+    </section>
 </body>
 
 </html>

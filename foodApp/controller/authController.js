@@ -1,14 +1,17 @@
 const userModel = require("../models/userModel");
 var jwt = require("jsonwebtoken");
 const { JWT_KEY } = require('../secrets');
-const { use } = require("../Routers/userRouter");
+
 console.log("1234 ", JWT_KEY);
+const { sendMail } = require('../utility/nodemailer')
 
 module.exports.signup=async function (req, res) {
   try {
     let data = req.body; //nep
       let user = await userModel.create(data);
-      if (user) {
+    if (user) {
+        //send mail
+      await sendMail("signup",user)
           res.json({
             msg: "user signed up",
             user,
@@ -69,6 +72,7 @@ module.exports.forgetpassword = async function (req, res) {
       let resetPasswordLink = `${req.protocol}://${req.get('host')}/resetpassword/${resetToken}`;
       //send email to user
       //nodemailer
+      await sendMail("forgetpassword",{email,resetPasswordLink});
     }
     else {
       res.json({
