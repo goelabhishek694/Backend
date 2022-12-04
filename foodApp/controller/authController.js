@@ -63,16 +63,20 @@ module.exports.login=async function (req, res) {
 module.exports.forgetpassword = async function (req, res) {
   try {
     let { email } = req.body;
-    const user = userModel.findOne({ email: email });
+    const user = await userModel.findOne({ email: email });
     if (user) {
       //resetToken
-      const resetToken = user.createResetToken();
+      const resetToken = await user.createResetToken();
       //create link 
       //https://xyz.com/resetPassword/resetToken
-      let resetPasswordLink = `${req.protocol}://${req.get('host')}/resetpassword/${resetToken}`;
+      let resetPasswordLink = `${req.protocol}://${req.get('host')}/user/resetpassword/${resetToken}`;
       //send email to user
       //nodemailer
-      await sendMail("forgetpassword",{email,resetPasswordLink});
+      await sendMail("forgetpassword", { email, resetPasswordLink });
+      
+      res.json({
+        msg:"email sent successfully"
+      })
     }
     else {
       res.json({
@@ -90,6 +94,7 @@ module.exports.forgetpassword = async function (req, res) {
 module.exports.resetpassword = async function (req, res) {
   try {
     const token = req.params.token;
+    console.log("0987",token);
     let { password, confirmPassword } = req.body;
     const user = await userModel.findOne({ resetToken: token });
     if (user) {

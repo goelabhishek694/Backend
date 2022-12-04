@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { db_link } = require("../secrets");
 const emailValidator = require("email-validator");
 const bcrypt = require('bcrypt');
-const uuidv4 = require("uuid");
+const { v4: uuidv4 } = require("uuid");
 mongoose
   .connect(db_link)
   .then(function (db) {
@@ -33,7 +33,7 @@ const userSchema = mongoose.Schema({
   },
   confirmPassword: {
     type: String,
-    required: true,
+    // required: true,
     minLength: 7,
     validate: function () {
       return this.confirmPassword == this.password;
@@ -48,7 +48,7 @@ const userSchema = mongoose.Schema({
     type: String,
     default:'img/users/default.jpg'
   },
-  resetToken:String
+  resetToken: { type: String }
 
 });
 
@@ -74,13 +74,15 @@ userSchema.pre("save", function () {
 //     // console.log(hashedString);
 // })
 
-userSchema.methods.createResetToken = function () {
-  const resetToken = uuidv4(); 
+userSchema.methods.createResetToken = async function () {
+  const resetToken = uuidv4();
   this.resetToken = resetToken;
+  // this.confirmPassword = this.password;
+  await this.save();
   return resetToken;
-}
+};
 
-userSchema.methods.resetPasswordHandler = function (password,confirmPassword) {
+userSchema.methods.resetPasswordHandler = function (password, confirmPassword) {
   this.password = password;
   this.confirmPassword = confirmPassword;
   this.resetToken = undefined;
