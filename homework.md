@@ -21,8 +21,8 @@ JEST - testing library for react
 https://mongoosejs.com/docs/middleware.html#pre
 https://www.npmjs.com/package/bcrypt?activeTab=readme
 
-
 https://www.youtube.com/watch?v=j4rlFpaKq-M&list=PL-Jc9J83PIiEnK1q9tuVrrORqKBexcE_J&index=41
 
-
 https://medium.com/@electra_chong/what-is-cors-what-is-it-used-for-308cafa4df1a
+
+https://www.youtube.com/watch?v=xRHLcGvZPrQ&list=PL-Jc9J83PIiEnK1q9tuVrrORqKBexcE_J&index=43
