@@ -1,7 +1,7 @@
 const express = require('express');
 const { protectRoute, isAuthorised } = require('../helper');
 const planRouter = express.Router();
-const { getAllPlans, getPlan, createPlan, updatePlan, deletePlan, top3Plans } = require('../controller/planController');
+const { getAllPlans, getPlan, createPlan, updatePlan, deletePlan, top3Plans } = require('../foodApp/controller/planController');
 
 planRouter
     .route('/all')
