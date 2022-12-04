@@ -6,9 +6,9 @@ const {
   updateUser,
   deleteUser,
   allUser,
-} = require("../foodApp/controller/userController");
+} = require("../controller/userController");
 const {isAuthorised,protectRoute} = require('../helper');
-const { signup, login, forgetpassword, resetpassword, logout } = require('../foodApp/controller/authController');
+const { signup, login, forgetpassword, resetpassword, logout } = require('../controller/authController');
 
 //user ke options
 userRouter
